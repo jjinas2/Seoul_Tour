@@ -1,0 +1,15 @@
+/* @font-face { */
+/*     font-family: 'noto'; */
+/*     src: url(/resources/font/Noto_Sans_KR/NotoSansKR-Bold.ttf) */
+/* } */
+/* @font-face { */
+/*     font-family: 'noto-reg'; */
+/*     src: url(/resources/font/Noto_Sans_KR/NotoSansKR-Regular.ttf) */
+/* } */
+
+/* body{ */
+/*     font-family:noto; */
+/* } */
+
+@import url(style.css);
+@import url(media.css);

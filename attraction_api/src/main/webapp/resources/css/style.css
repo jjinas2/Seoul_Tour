@@ -1,0 +1,481 @@
+
+
+* {
+    margin:0;
+    padding:0;
+}
+
+html {
+    font-size: 10px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_wrap {
+    width: 1000px;
+    margin: 25px auto;
+}
+
+.board_title {
+    margin-bottom: 30px;
+    background-image: url('/resources/img/경복궁2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 100px;
+    opacity: 0; /* 초기에 투명도를 0으로 설정 */
+    border-radius: 5px;
+    animation: fadeIn 1.5s ease-out forwards; /* fadeIn 애니메이션 적용 */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 시작할 때 투명도 0 */
+    }
+    to {
+        opacity: 1; /* 애니메이션이 끝날 때 투명도 1 */
+    }
+}
+
+.board_title strong {
+    font-size: 3rem;
+}
+
+.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+.board_title strong,
+.board_title p {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+}
+
+.board_title.loaded strong,
+.board_title.loaded p {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.bt_wrap a:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap a.on {
+    background: #000;
+    color: #fff;
+}
+
+.bt_wrap a:hover {
+    background: #c0c0c0;
+    color: #fff;
+}
+
+.board_list {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+
+.board_list > div.top {
+    border-color: #999;
+}
+
+.board_list > div:last-child {
+    border-bottom: 1px solid #000;
+}
+
+.board_list > div:hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.3s; /* 호버 효과 부드럽게 전환 */
+}
+
+.board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.board_list > div.top > div {
+    font-weight: 600;
+}
+
+.board_list .num {
+    width: 10%;
+}
+.board_list .num:hover {
+    background-color: #f5f5f5;
+    /* 다른 원하는 스타일 추가 */
+}
+.board_list > div {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+
+.board_list .title {
+    width: 60%;
+    text-align: left;
+}
+
+.board_list .top .title {
+    text-align: center;
+}
+.board_list .top:hover {
+    background-color: initial; /* 또는 원래의 배경색 값으로 변경 */
+}
+.board_list .top .num {
+    background-color: initial;
+}
+
+.board_list .writer {
+    width: 10%;
+}
+
+.board_list .date {
+    width: 10%;
+}
+
+.board_list .count {
+    width: 10%;
+}
+
+.board_page {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_page a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-left: 0;
+    line-height: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.board_page a.bt {
+    padding-top: 10px;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.board_page a.num {
+    padding-top: 9px;
+    font-size: 1.4rem;
+}
+
+.board_page a.num.on {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.board_page a:first-child {
+    border-left: 1px solid #ddd;
+}
+
+.board_page a:hover {
+    background: #000;
+    color: #fff;
+}
+
+.board_view {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+.board_view .title {
+    padding: 20px 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    font-size: 0;
+}
+
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.board_view .info dl:first-child {
+    padding-left: 0;
+}
+
+.board_view .info dl::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
+}
+
+.board_view .info dl:first-child::before {
+    display: none;
+}
+
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_view .info dl dt {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_view .info dl dd {
+    margin-left: 10px;
+    color: #777;
+}
+
+.board_view .cont {
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    line-height: 160%;
+    font-size: 1.4rem;
+}
+
+.board_write {
+    border-top: 2px solid #000;
+}
+
+.board_write .title,
+.board_write .info {
+    padding: 15px;
+}
+
+.board_write .info {
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px solid #000;
+    font-size: 0;
+}
+
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .info dl {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .info dt,
+.board_write .info dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.board_write .title dt,
+.board_write .info dt {
+    width: 100px;
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"],
+.board_write .info input[type="text"],
+.board_write .info input[type="password"] {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type="text"] {
+    width: 80%; /* 부모 요소의 100%를 차지하도록 설정 */
+    max-width: none; /* 최대 너비 제한을 없애고 전체 화면에 맞추도록 설정 */
+}
+
+.board_write .cont {
+    border-bottom: 1px solid #000;
+}
+
+.board_write .cont textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 0;
+    resize: vertical;
+}
+.comment_wrap {
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.comment_wrap form div {
+    margin-bottom: 10px;
+}
+
+.comment_list {
+    margin-top: 10px;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.comment div {
+    margin-bottom: 5px;
+}
+.comment_wrap form input[type="text"] {
+    padding: 12px;
+    width: calc(70% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.comment_wrap form a.comment_btn {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none; /* 기본 링크 스타일 제거 */
+    margin-left: 10px; /* 원하는 간격 설정 */
+}
+
+.comment_wrap form a.comment_btn:hover {
+    background-color: #555;
+}
+
+.comment_list a.edit-comment-btn,
+.comment_list a.delete-comment-btn {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none; /* 기본 링크 스타일 제거 */
+    margin-left: 10px; /* 원하는 간격 설정 */
+}
+
+.comment_list a.edit-comment-btn:hover,
+.comment_list a.delete-comment-btn:hover {
+    background-color: #555;
+}
+
+.board_list .admin_num {
+    background-color: #f5f5f5;
+    transition: background-color 0.3s; /* 호버 효과 부드럽게 전환 */
+}
+  
+.board_list .admin_num:hover {
+    background-color: #f5f5f5;
+}
+.uploadResult {
+		width: 100%;
+		background-color: gray;
+	}
+.uploadResult ul {
+	display: flex;
+	flex-flow: row;
+	/* justify-content: center; */
+	align-items: center;
+	background-color: #ffffff;
+}
+/* p543 수정 */ 
+.uploadResult ul li {
+	list-style: none;
+	padding: 10px;
+	align-content: center;
+	text-align: center;
+}
+.uploadResult ul li img {
+	width: 100%;
+}
+.uploadResult ul li span {
+	color: black;
+}
+.bigPictureWrapper {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	z-index: 100;
+	background: rgba(255,255,255,0.5)
+}
+.bigPicture {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bigPicture img {
+	width: 600px;
+}
+
+.like__btn {
+  padding: 5px 10px;
+  background: #000000;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.delete-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
